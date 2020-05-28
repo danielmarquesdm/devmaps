@@ -50,12 +50,12 @@ function Main({ navigation }) {
   }, [devs]);
 
   function setupWebSocket() {
+    disconnect();
     const { latitude, longitude } = currentRegion;
     connect(latitude, longitude, techs);
   }
 
   async function loadDevs() {
-    disconnect();
     const { latitude, longitude } = currentRegion;
     const response = await api.get('/search', {
       params: {
